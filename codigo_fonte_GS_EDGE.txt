@@ -1,0 +1,52 @@
+#include <DHT.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#define DHTPIN 2  // Pino para o DHT22
+#define DHTTYPE DHT22
+
+// Inicializa o DHT22
+DHT dht(DHTPIN, DHTTYPE);
+
+// Inicializa o LCD
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  // Inicia a comunicação serial
+  Serial.begin(9600);
+
+  // Inicia o sensor DHT 
+  dht.begin();
+
+  // Inicia o LCD
+  lcd.init();
+  lcd.backlight();
+
+  // Printa a mensagem no LCD
+  lcd.setCursor(0, 0);
+  lcd.print("Temp:");
+  lcd.setCursor(0, 1);
+  lcd.print("Humi:");
+}
+
+void loop() {
+  // Lê a temperatura e a humidade vindos do sensor DHT
+  float temperatura = dht.readTemperature();
+  float humidade = dht.readHumidity();
+
+  // Mostra a temperatura e a humidade no monitor serial
+  Serial.print("Temperatura: ");
+  Serial.print(temperatura);
+  Serial.print(" °C\t");
+  Serial.print("Humidade: ");
+  Serial.print(humidade);
+  Serial.println(" %");
+
+  // Mostra a temperatura e a humidade no LCD
+  lcd.setCursor(12, 0);
+  lcd.print(temperatura);
+  lcd.setCursor(12, 1);
+  lcd.print(humidade);
+
+  // Espera por 2 segundos para ler novamente os dados
+  delay(2000);
+}
