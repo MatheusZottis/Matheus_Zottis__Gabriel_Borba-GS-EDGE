@@ -1,4 +1,9 @@
 # Sustentablue
+### Grupo e RM
+Matheus Zottis RM:94119
+
+Gabriel Borba RM:553187
+
 ## Descrição do Projeto
 Sustentablue é uma plataforma de monitoramento e gestão sustentável dos oceanos, que visa reduzir a poluição marinha e promover práticas de economia azul. A solução integra várias tecnologias para capturar, analisar e visualizar dados sobre a saúde dos oceanos, utilizando sensores de temperatura e umidade (DHT22) e um display LCD para exibição local dos dados. Este projeto é simulado utilizando o Wokwi, uma ferramenta de simulação para projetos de Arduino.
 
